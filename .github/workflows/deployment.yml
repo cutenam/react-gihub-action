@@ -26,10 +26,11 @@ jobs:
       - name: Install Dependencies and Surge
         run: |
           npm install
+          npm install --save-dev web-vitals
           npm install surge --global
           
       - name: Build React Application
-        run : yarn build
+        run : npm build
       
       - name: Delply React Application to Surge
         run: surge ./build ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
